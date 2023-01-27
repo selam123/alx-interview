@@ -59,8 +59,4 @@ def validUTF8(data):
         else:
             return False
     return True
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Priva
+
