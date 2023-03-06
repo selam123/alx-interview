@@ -1,14 +1,25 @@
-#!/usr/bin/env fish
-python3 -m doctest -v (basename (status -f))
-exit
+#!/usr/bin/python3
 """
->>> makeChange = __import__('0-making_change').makeChange
->>> test_cases = [
-...     ([1, 2, 25], 37),
-...     ([1256, 54, 48, 16, 102], 1453),
-... ]
->>> for coins, total in test_cases:
-...     print(makeChange(coins, total))
-7
--1
+Given a pile of coins of different values, determine the fewest
+number of coins needed to meet a given amount total.
 """
+
+
+def makeChange(coins, total):
+    """
+    Given a pile of coins of different values, determine the fewest
+    number of coins needed to meet a given amount total.
+    """
+    sum = 0
+    if (total <= 0):
+        return 0
+    coins.sort(reverse=True)
+    for i in coins:
+        if (total < i):
+            pass
+        q, r = divmod(total, i)
+        total = r
+        sum += q
+    if (total != 0):
+        return -1
+    return sum
